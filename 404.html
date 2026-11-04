@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<script>/* Proteção contra cópia */
+(function () {
+  var field = function (el) { return el && el.closest && el.closest('input, textarea, select, [contenteditable="true"]'); };
+  var block = function (e) { e.preventDefault(); e.stopPropagation(); return false; };
+  document.addEventListener('contextmenu', block, true);
+  document.addEventListener('keydown', function (e) {
+    var k = (e.key || '').toLowerCase(), c = e.ctrlKey || e.metaKey;
+    if (k === 'f12' || e.keyCode === 123) return block(e);
+    if (c && e.shiftKey && ['i', 'j', 'c', 'k'].indexOf(k) > -1) return block(e);
+    if (c && e.altKey && ['i', 'j', 'c', 'u'].indexOf(k) > -1) return block(e);
+    if (c && ['u', 's', 'p'].indexOf(k) > -1) return block(e);
+    if (c && ['a', 'c', 'v', 'x'].indexOf(k) > -1 && !field(e.target)) return block(e);
+  }, true);
+  ['copy', 'cut', 'paste', 'selectstart'].forEach(function (ev) {
+    document.addEventListener(ev, function (e) { if (!field(e.target)) block(e); }, true);
+  });
+  document.addEventListener('dragstart', function (e) { if (!field(e.target)) block(e); }, true);
+  var s = document.createElement('style');
+  s.textContent = 'html,body{-webkit-user-select:none;-moz-user-select:none;user-select:none;-webkit-touch-callout:none}input,textarea,select{-webkit-user-select:text;user-select:text}img{-webkit-user-drag:none;user-drag:none;pointer-events:auto}';
+  document.documentElement.appendChild(s);
+})();
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex" />
+<title>Página não encontrada — ChatPiloto</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;800&display=swap" rel="stylesheet" />
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{min-height:100vh;display:grid;place-items:center;background:#05070a;color:#e9f2ee;font-family:Sora,sans-serif;padding:24px;overflow:hidden}
+body::before{content:"";position:fixed;width:620px;height:620px;border-radius:50%;background:radial-gradient(circle,rgba(0,245,160,.22),transparent 65%);top:50%;left:50%;transform:translate(-50%,-50%);animation:pulse 4s ease-in-out infinite}
+@keyframes pulse{50%{transform:translate(-50%,-50%) scale(1.15)}}
+.box{position:relative;text-align:center;max-width:520px}
+.logo{font-weight:700;font-size:1.3rem;letter-spacing:-.02em;margin-bottom:36px;display:inline-block;color:#e9f2ee;text-decoration:none}
+.logo b{color:#00f5a0}
+h1{font-family:Sora,sans-serif;font-weight:800;font-size:clamp(6rem,22vw,10rem);line-height:1;letter-spacing:-.06em;background:linear-gradient(135deg,#00f5a0,#ff3d8b);-webkit-background-clip:text;background-clip:text;color:transparent;animation:float 3s ease-in-out infinite}
+@keyframes float{50%{transform:translateY(-10px)}}
+h2{font-size:1.6rem;margin:14px 0 10px;letter-spacing:-.02em}
+p{color:#8a978f;line-height:1.6}
+a.btn{display:inline-block;margin-top:30px;padding:14px 28px;border-radius:12px;background:#00f5a0;color:#03130c;font-weight:600;text-decoration:none;box-shadow:0 12px 30px -10px #00f5a0}
+small{display:block;margin-top:18px;color:#8a978f;font-size:.85rem}
+</style>
+</head>
+<body>
+<div class="box">
+  <a href="/" class="logo">Chat<b>Piloto</b></a>
+  <h1>404</h1>
+  <h2>Página não encontrada</h2>
+  <p>O endereço que você acessou não existe ou foi movido.</p>
+  <a href="/" class="btn">Voltar para o início</a>
+  <small>Você será redirecionado em <span id="n">5</span> segundos…</small>
+</div>
+<script>var n=5,el=document.getElementById('n');setInterval(function(){n--;if(n<=0){location.replace('/');}else{el.textContent=n;}},1000);</script>
+</body>
+</html>
