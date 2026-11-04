@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ChatPiloto — Automação de WhatsApp e Instagram</title>
+  <meta name="description" content="ChatPiloto: respostas automáticas no WhatsApp e no Direct do Instagram com integração à API oficial. Bots inteligentes que atendem, vendem e recuperam carrinhos 24h por dia." />
+  <meta name="theme-color" content="#05070a" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%2300f5a0'/%3E%3Cstop offset='1' stop-color='%23ff3d8b'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='18' fill='url(%23g)'/%3E%3Cpath d='M18 22h28a4 4 0 0 1 4 4v14a4 4 0 0 1-4 4H30l-8 7v-7h-4a4 4 0 0 1-4-4V26a4 4 0 0 1 4-4z' fill='%2305070a'/%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="noise" aria-hidden="true"></div>
+  <div class="cursor-glow" aria-hidden="true"></div>
+
+  <!-- ============ CABEÇALHO ============ -->
+  <header class="header" id="topo">
+    <div class="header__bar">
+      <a href="#topo" class="logo" aria-label="ChatPiloto">
+        <span class="logo__mark"><svg viewBox="0 0 64 64"><path d="M14 18h36a5 5 0 0 1 5 5v18a5 5 0 0 1-5 5H30l-10 9v-9h-6a5 5 0 0 1-5-5V23a5 5 0 0 1 5-5z" fill="currentColor"/><circle cx="24" cy="32" r="3.5" fill="#05070a"/><circle cx="32" cy="32" r="3.5" fill="#05070a"/><circle cx="40" cy="32" r="3.5" fill="#05070a"/></svg></span>
+        <span>Chat<b>Piloto</b></span>
+      </a>
+      <nav class="nav" id="nav">
+        <a href="#ia">Inteligência</a>
+        <a href="#demo">Demonstração</a>
+        <a href="#recursos">Recursos</a>
+        <a href="#precos">Preços</a>
+      </nav>
+      <div class="header__actions">
+        <button class="btn btn--line" data-open-login>Login</button>
+        <a href="#cadastro" class="btn btn--neon">Cadastrar</a>
+        <button class="burger" id="burger" aria-label="Menu"><span></span><span></span></button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============ BANNER ============ -->
+  <section class="hero">
+    <div class="hero__img"><img src="img/hero.jpg" alt="Smartphone cercado por balões de conversa luminosos" /></div>
+    <div class="hero__shade"></div>
+    <div class="hero__grid" aria-hidden="true"></div>
+    <div class="hero__content">
+      <div class="badge reveal-up"><span class="dot"></span>Integração com a API oficial · WhatsApp Business &amp; Instagram</div>
+      <h1 class="hero__title">
+        <span class="split">Seu atendimento</span>
+        <span class="split"><span class="grad">no piloto automático.</span></span>
+      </h1>
+      <p class="hero__sub reveal-up">Bots que respondem mensagens no WhatsApp e no Direct do Instagram em segundos — com a voz da sua marca, 24 horas por dia, 7 dias por semana.</p>
+      <div class="hero__cta reveal-up">
+        <a href="#cadastro" class="btn btn--neon btn--lg">Criar meu bot grátis</a>
+        <a href="#demo" class="btn btn--line btn--lg">▶ Ver o bot em ação</a>
+      </div>
+      <div class="hero__chips reveal-up">
+        <span>⚡ Resposta em &lt; 2s</span><span>🤖 IA treinada no seu negócio</span><span>🔒 Dados criptografados</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ LOGOS / TICKER ============ -->
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker__row">
+      <span>WhatsApp Business</span><i></i><span>Instagram Direct</span><i></i><span>Shopify</span><i></i><span>Nuvemshop</span><i></i><span>WooCommerce</span><i></i><span>Hotmart</span><i></i><span>Google Sheets</span><i></i><span>Webhooks</span><i></i><span>RD Station</span><i></i><span>Kiwify</span><i></i>
+      <span>WhatsApp Business</span><i></i><span>Instagram Direct</span><i></i><span>Shopify</span><i></i><span>Nuvemshop</span><i></i><span>WooCommerce</span><i></i><span>Hotmart</span><i></i><span>Google Sheets</span><i></i><span>Webhooks</span><i></i><span>RD Station</span><i></i><span>Kiwify</span><i></i>
+    </div>
+  </div>
+
+  <!-- ============ IA 3D (MORPH) ============ -->
+  <section class="brain" id="ia">
+    <div class="brain__sticky">
+      <canvas id="morph"></canvas>
+      <div class="brain__texts">
+        <div class="btext is-on">
+          <span class="mono">// 01 — entender</span>
+          <h2>Lê cada mensagem<br/>como <span class="grad">uma pessoa lê.</span></h2>
+          <p>Áudio, texto, emoji ou print: a IA identifica a intenção do cliente e responde no contexto certo.</p>
+        </div>
+        <div class="btext">
+          <span class="mono">// 02 — conectar</span>
+          <h2>Consulta pedidos,<br/><span class="grad">estoque e agenda.</span></h2>
+          <p>Conectado à sua loja e aos seus sistemas, o bot informa status de entrega, preços e horários reais.</p>
+        </div>
+        <div class="btext">
+          <span class="mono">// 03 — converter</span>
+          <h2>Responde, oferece<br/><span class="grad">e fecha a venda.</span></h2>
+          <p>Envia link de pagamento, recupera carrinhos abandonados e passa para um humano quando precisa.</p>
+        </div>
+      </div>
+      <div class="brain__dots"><i class="is-on"></i><i></i><i></i></div>
+    </div>
+  </section>
+
+  <!-- ============ DEMO CELULAR 3D ============ -->
+  <section class="demo" id="demo">
+    <div class="demo__sticky">
+      <div class="demo__copy">
+        <span class="mono">// demonstração ao vivo</span>
+        <h2>Veja o ChatPiloto<br/><span class="grad">conversando.</span></h2>
+        <p>Role a página e acompanhe um atendimento real sendo resolvido do início ao fim — sem nenhum humano envolvido.</p>
+        <div class="demo__metrics">
+          <div><strong data-count="1.8" data-dec="1" data-suffix="s">0</strong><small>tempo médio de resposta</small></div>
+          <div><strong data-count="87" data-suffix="%">0</strong><small>conversas resolvidas pelo bot</small></div>
+        </div>
+      </div>
+      <div class="phone-stage">
+        <div class="phone" id="phone">
+          <div class="phone__side phone__side--r"></div>
+          <div class="phone__screen">
+            <div class="chat__top">
+              <span class="chat__avatar">LB</span>
+              <div><b>Loja Bella</b><small id="typing">online</small></div>
+              <span class="chat__badge">BOT</span>
+            </div>
+            <div class="chat__body" id="chat">
+              <div class="msg msg--in">Oi! Vocês têm o vestido midi verde no tamanho M? 👗</div>
+              <div class="msg msg--out">Olá, Ana! Tenho sim 💚 Restam 3 unidades no M. Quer que eu reserve uma para você?</div>
+              <div class="msg msg--in">Quero! Qual o prazo pra São Paulo?</div>
+              <div class="msg msg--out">Para o CEP 04538 chega em 2 dias úteis, frete grátis 🚚</div>
+              <div class="msg msg--out msg--card"><span class="card__img"></span><div><b>Vestido Midi Verde · M</b><small>R$ 189,90 · Pix 5% off</small><em>Pagar agora →</em></div></div>
+              <div class="msg msg--in">Paguei no Pix! 🥰</div>
+              <div class="msg msg--out">Pagamento confirmado ✅ Pedido #4821 enviado hoje. Te aviso por aqui quando sair para entrega!</div>
+            </div>
+            <div class="chat__input"><span>Mensagem</span><i>➤</i></div>
+          </div>
+          <div class="phone__notch"></div>
+        </div>
+        <div class="float-chip fc1">💬 +312 conversas hoje</div>
+        <div class="float-chip fc2">🛒 Carrinho recuperado · R$ 189,90</div>
+        <div class="float-chip fc3">📸 Direct respondido em 1.2s</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ BENTO RECURSOS ============ -->
+  <section class="bento-wrap" id="recursos">
+    <div class="wrap">
+      <div class="head">
+        <span class="mono">// recursos</span>
+        <h2>Tudo para automatizar<br/><span class="grad">sem perder o toque humano.</span></h2>
+      </div>
+      <div class="bento">
+        <article class="tile tile--big tile--photo">
+          <img src="img/foto1.jpg" alt="Empreendedora respondendo clientes pelo celular" />
+          <div class="tile__over"><h3>Atendimento que parece gente</h3><p>Treine o bot com seu catálogo, suas políticas e seu jeito de falar.</p></div>
+        </article>
+        <article class="tile glow">
+          <div class="tile__ico">📲</div><h3>WhatsApp oficial</h3><p>Número verificado, templates aprovados e disparos sem risco de bloqueio.</p>
+        </article>
+        <article class="tile glow">
+          <div class="tile__ico">📸</div><h3>Direct e comentários</h3><p>Responda automaticamente quem comenta “EU QUERO” no seu post ou story.</p>
+        </article>
+        <article class="tile glow">
+          <div class="tile__ico">🛒</div><h3>Recuperação de carrinho</h3><p>Mensagem certa no momento certo para quem não finalizou a compra.</p>
+        </article>
+        <article class="tile tile--wide tile--photo">
+          <img src="img/foto2.jpg" alt="Mãos digitando no celular à noite" />
+          <div class="tile__over"><h3>Caixa de entrada unificada</h3><p>WhatsApp, Instagram e site em um só lugar para sua equipe.</p></div>
+        </article>
+        <article class="tile glow">
+          <div class="tile__ico">🧠</div><h3>Fluxos visuais</h3><p>Monte jornadas arrastando blocos: perguntas, botões, condições e tags.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FLUXO ============ -->
+  <section class="flow">
+    <div class="wrap">
+      <div class="head head--c">
+        <span class="mono">// como funciona</span>
+        <h2>Do primeiro “oi”<br/><span class="grad">ao pedido pago.</span></h2>
+      </div>
+      <div class="flow__line">
+        <svg viewBox="0 0 1000 120" preserveAspectRatio="none" aria-hidden="true"><path id="flowPath" d="M0 60 C 160 0, 340 120, 500 60 S 840 0, 1000 60" /></svg>
+        <div class="node"><span>1</span><h4>Cliente chama</h4><p>WhatsApp, Direct ou comentário</p></div>
+        <div class="node"><span>2</span><h4>Bot entende</h4><p>IA identifica a intenção</p></div>
+        <div class="node"><span>3</span><h4>Consulta dados</h4><p>Loja, CRM e estoque</p></div>
+        <div class="node"><span>4</span><h4>Venda fechada</h4><p>Link de pagamento enviado</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PREÇOS ============ -->
+  <section class="pricing" id="precos">
+    <div class="wrap">
+      <div class="head head--c">
+        <span class="mono">// preços</span>
+        <h2>Planos que crescem<br/><span class="grad">com suas conversas.</span></h2>
+        <div class="toggle" id="billing"><button class="is-on" data-b="m">Mensal</button><button data-b="a">Anual <em>-20%</em></button></div>
+      </div>
+      <div class="prices">
+        <div class="price">
+          <h3>Starter</h3><p class="price__d">Para quem está começando</p>
+          <div class="price__v">R$ <b data-m="79" data-a="63">79</b><small>/mês</small></div>
+          <ul><li>1 número de WhatsApp</li><li>1 conta do Instagram</li><li>1.000 conversas/mês</li><li>Fluxos ilimitados</li></ul>
+          <a href="#cadastro" class="btn btn--line">Começar</a>
+        </div>
+        <div class="price price--pro">
+          <span class="price__tag">Recomendado</span>
+          <h3>Pro</h3><p class="price__d">Para lojas em crescimento</p>
+          <div class="price__v">R$ <b data-m="199" data-a="159">199</b><small>/mês</small></div>
+          <ul><li>3 números de WhatsApp</li><li>3 contas do Instagram</li><li>10.000 conversas/mês</li><li>IA treinada no seu catálogo</li><li>Recuperação de carrinho</li></ul>
+          <a href="#cadastro" class="btn btn--neon">Assinar Pro</a>
+        </div>
+        <div class="price">
+          <h3>Scale</h3><p class="price__d">Para operações grandes</p>
+          <div class="price__v">R$ <b data-m="499" data-a="399">499</b><small>/mês</small></div>
+          <ul><li>Números e contas ilimitados</li><li>Conversas ilimitadas</li><li>API e webhooks</li><li>Gerente de conta</li></ul>
+          <a href="#cadastro" class="btn btn--line">Falar com vendas</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CADASTRO ============ -->
+  <section class="signup" id="cadastro">
+    <div class="signup__bg"><img src="img/foto3.jpg" alt="" /></div>
+    <div class="wrap signup__in">
+      <div class="signup__copy">
+        <span class="mono">// cadastro</span>
+        <h2>Ative seu<br/><span class="grad">piloto automático.</span></h2>
+        <p>Crie sua conta e nossa equipe analisa seu acesso à integração oficial do WhatsApp e do Instagram.</p>
+      </div>
+      <form class="form" id="signupForm" novalidate>
+        <div class="form__body">
+          <label class="inp"><span>Nome</span><input name="nome" type="text" placeholder="Seu nome completo" autocomplete="off" /></label>
+          <label class="inp"><span>E-mail</span><input name="email" type="email" placeholder="voce@empresa.com" autocomplete="off" /></label>
+          <label class="inp"><span>Telefone</span><input name="telefone" id="s-tel" type="tel" placeholder="(00) 00000-0000" autocomplete="off" /></label>
+          <div class="form__2">
+            <label class="inp"><span>Senha</span><input name="senha" type="password" placeholder="Mín. 6 caracteres" autocomplete="new-password" /></label>
+            <label class="inp"><span>Repita a senha</span><input name="senha2" type="password" placeholder="Repita a senha" autocomplete="new-password" /></label>
+          </div>
+          <p class="err" id="signupError"></p>
+          <button class="btn btn--neon btn--lg btn--full" type="submit">Confirmar</button>
+        </div>
+        <div class="form__ok" hidden>
+          <div class="ok__ring"><svg viewBox="0 0 52 52"><circle cx="26" cy="26" r="24"/><path d="M15 27l7 7 15-16"/></svg></div>
+          <h3>Seus dados foram enviados para análise.</h3>
+          <p>Você receberá um retorno no e-mail cadastrado.</p>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- ============ RODAPÉ ============ -->
+  <footer class="footer">
+    <div class="wrap footer__in">
+      <a href="#topo" class="logo"><span class="logo__mark"><svg viewBox="0 0 64 64"><path d="M14 18h36a5 5 0 0 1 5 5v18a5 5 0 0 1-5 5H30l-10 9v-9h-6a5 5 0 0 1-5-5V23a5 5 0 0 1 5-5z" fill="currentColor"/></svg></span><span>Chat<b>Piloto</b></span></a>
+      <p class="footer__note">WhatsApp e Instagram são marcas registradas de seus respectivos proprietários.</p>
+      <p>© <span id="ano"></span> ChatPiloto</p>
+    </div>
+  </footer>
+
+  <!-- ============ POPUP LOGIN ============ -->
+  <div class="modal" id="loginModal" aria-hidden="true">
+    <div class="modal__bg" data-close></div>
+    <div class="modal__card" role="dialog" aria-modal="true" aria-labelledby="loginTitle">
+      <div class="modal__border"></div>
+      <button class="modal__x" data-close aria-label="Fechar">✕</button>
+      <span class="mono">// área do cliente</span>
+      <h3 id="loginTitle">Entrar no <span class="grad">ChatPiloto</span></h3>
+      <form id="loginForm" novalidate>
+        <label class="inp"><span>Login</span><input id="l-user" type="text" placeholder="E-mail ou usuário" autocomplete="off" /></label>
+        <label class="inp"><span>Senha</span><input id="l-pass" type="password" placeholder="Sua senha" autocomplete="off" /></label>
+        <p class="err" id="loginError"></p>
+        <button class="btn btn--neon btn--full" type="submit">Entrar</button>
+      </form>
+      <p class="modal__foot">Não tem conta? <a href="#cadastro" data-close>Cadastre-se</a></p>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+  <script type="importmap">{ "imports": { "three": "https://unpkg.com/three@0.160.0/build/three.module.js", "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/" } }</script>
+  <script type="module" src="main.js"></script>
+</body>
+</html>
